@@ -9,6 +9,11 @@ names(titanic)
 data = titanic[,c(2,3,5,6,7)]  #select few columns only
 head(data)
 
+library(ISLR)
+data(Carseats)
+data=Carseats
+head(data)
+?Carseats
 #load libraries
 library(rpart)
 library(rpart.plot)
@@ -18,13 +23,20 @@ fit <- rpart(survived~., data = data, method = 'class')
 fit
 rpart.plot(fit, extra = 106, cex=.8,nn=T)  #plot
 
+tree1=rpart(Sales~.,data=data,method='anova')
+tree1
+rpart.plot(tree1,cex=0.8)
+
+printcp(tree1)
+
 printcp(fit) #select complexity parameter
-prunetree2 = prune(fit, cp=.015)
+prunetree2 = prune(fit, cp=.014)
 rpart.plot(prunetree2, cex=.8,nn=T)
 prunetree2
 nrow(data)
 
 #Predict class category or probabilities
+library(dplyr)
 (testdata = sample_n(data,2))
 predict(prunetree2, newdata=testdata, type='class')
 predict(prunetree2, newdata=testdata, type='prob')
