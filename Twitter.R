@@ -1,4 +1,4 @@
-#Twitter 1 - Configure Tweets and Download them
+d#Twitter 1 - Configure Tweets and Download them
 #@dupadhyaya  #Working using my Keys
 #Load libraries
 library("curl")
@@ -28,7 +28,7 @@ load("twitter authentication.Rdata")
 setup_twitter_oauth(consumerKey, consumerSecret, AccessToken, AccessTokenSecret)
 #type 1 : Yes 
 #search.string <- "#businessanalytics"
-search.string <- "#marketinganalytics"
+search.string <- "#XIMB"
 
 no.of.tweets <- 100
 
